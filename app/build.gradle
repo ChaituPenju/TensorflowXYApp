@@ -14,6 +14,11 @@ android {
         versionCode 1
         versionName "1.0"
 
+        // For reducing size of application binary by including ABIs we need
+        ndk {
+            abiFilters 'armeabi-v7a', 'arm64-v8a'
+        }
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -23,6 +28,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    aaptOptions {
+        noCompress "tflite"
+        noCompress "lite"
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -32,7 +43,6 @@ android {
     }
 
     buildFeatures {
-        mlModelBinding true
         viewBinding true
     }
 }
@@ -47,12 +57,12 @@ dependencies {
 
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
 
-    // Tensorflow android support libraries
-    implementation 'org.tensorflow:tensorflow-lite-support:0.1.0'
-    implementation 'org.tensorflow:tensorflow-lite-metadata:0.1.0'
+    // Import tflite dependencies
+    implementation 'org.tensorflow:tensorflow-lite:2.4.0'
 
-    // Tensorflow gpu library (optional)
+    // The GPU delegate library is optional. Depend on it as needed.
     implementation 'org.tensorflow:tensorflow-lite-gpu:2.3.0'
+    implementation 'org.tensorflow:tensorflow-lite-support:0.1.0'
 
 
     testImplementation 'junit:junit:4.+'
