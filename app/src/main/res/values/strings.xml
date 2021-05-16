@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">TensorFlowXYApp</string>
+
+    <string name="prediction_description_heading">Prediction of relation between x and y \n y = 2*x - 1</string>
+    <string name="edit_text_hint">Enter \'x\' value</string>
+    <string name="btn_text">Predict y value</string>
+    <string name="predicted_value_text">Predicted Value = </string>
+    <string name="predicted_value">Predicted Value = %1$s</string>
+    <string name="actual_value_text">Actual Value = </string>
+    <string name="actual_value">Actual Value = %1$s</string>
 </resources>
